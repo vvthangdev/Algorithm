@@ -4,7 +4,7 @@
 */
 #include <bits/stdc++.h>
 using namespace std;
-int n, m, r, c, cnt = 0;
+int n, m, r, c;
 char a[1001][1001];
 int d[1001][1001];
 bool visited[1001][1001];
@@ -27,7 +27,7 @@ int bfs(int i, int j) {
                 // cout << i1 << " " << j1 << endl;
                 d[i1][j1] = d[top.first][top.second] + 1;
                 // cout << d[i1][j1] << endl;
-                if (i1 == n || j1 == m) return d[i1][j1];
+                if (i1 == 1 || i1 == n || j1 == 1 || j1 == m) return d[i1][j1];
                 q.push({i1, j1});
                 visited[i1][j1] = true;
             }
@@ -50,7 +50,10 @@ int main () {
             visited[i][j] = false;
         }
     }
-    cout << bfs(r , c) + 1;
-    
+    int res = bfs(r, c) + 1;
+    if (res == 0) {
+        cout << -1;
+    }
+    else cout << res;
     return 0;
 }

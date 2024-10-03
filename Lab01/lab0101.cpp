@@ -20,7 +20,8 @@ using namespace std;
 short hour, min, sec;
 int time_to_sec(const string &time) {
     int hours, minutes, seconds;
-    sscanf(time.c_str(), "%d:%d:%d", &hours, &minutes, &seconds);
+    // sscanf(time.c_str(), "%d:%d:%d", &hours, &minutes, &seconds);
+	
     return hours * 3600 + minutes * 60 + seconds;
 }
 
@@ -74,7 +75,7 @@ int main () {
 		string number; cin >> number;
 		cout << number_calls_from[number] << endl;
 		}
-		else if (query == "?number_number_total_calls") {
+		else if (query == "?number_total_calls") {
 		cout << number_total_calls << endl;
 		}
 		else if (query == "?count_time_calls_from") {
