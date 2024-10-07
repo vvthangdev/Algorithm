@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-const int N = 1e3+1;
+const int N = 1e3+5;
 
 int a[N][N];
 int n,m;
@@ -23,17 +23,29 @@ long long compute(){
             h[0] = -1; h[m+1] = -1;
             V.clear();
             for(int i = 1; i <= m+1; i++){
-                    while(!V.empty() && h[i] < h[V[V.size()-1]]){
-                        R[V[V.size()-1]] = i; V.pop_back();
-                    }
-                    V.push_back(i);
+            	for (int j = i; j <= m+1; j++) {
+            		if(h[j] < h[i]) {
+            			R[i] = j;
+            			break;
+					}
+				}
+//                    while(!V.empty() && h[i] < h[V[V.size()-1]]){
+//                        R[V[V.size()-1]] = i; V.pop_back();
+//                    }
+//                    V.push_back(i);
             }
 
             for(int i = m; i >= 0; i--){
-                while(!V.empty() && h[i] < h[V[V.size()-1]]){
-                    L[V[V.size()-1]] = i; V.pop_back();
-                }
-                V.push_back(i);
+            	for (int j = i; j >= 0; j--) {
+            		if(h[j] < h[i]) {
+            			L[i] = j;
+            			break;
+					}
+				}
+//                while(!V.empty() && h[i] < h[V[V.size()-1]]){
+//                    L[V[V.size()-1]] = i; V.pop_back();
+//                }
+//                V.push_back(i);
             }
             unsigned long long ans = 0;
             for(int i = 1; i <= m; i++){
